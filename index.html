@@ -3,62 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Web Troll Cháy Hết Mình</title>
+    <title>Album Giới Thiệu Team Xe</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
-        body {
+        .logo-img {
+            width: 700px;
+            display: block;
+            margin: 0 auto;
+        }
+        .main-img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .thumbnail {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .thumbnail:hover {
+            transform: scale(1.1);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
             text-align: center;
-            font-family: Arial, sans-serif;
-            transition: background 0.3s;
-            overflow: hidden;
-            cursor: crosshair;
         }
-        .message {
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            background: red;
-            padding: 10px;
-            border-radius: 10px;
+        .modal-content {
+            margin: 10% auto;
+            display: block;
+            max-width: 80%;
+            border-radius: 8px;
+        }
+        .close {
             position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            transition: all 0.3s ease-in-out;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
         }
-        .rotate {
-            animation: spin 0.5s linear infinite;
-        }
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+
     </style>
 </head>
 <body>
-    <div class="message">Bấm vào đây xem điều bất ngờ!</div>
-    <script>
-        const messages = [
-            "Bạn vừa bị troll! Haha!",
-            "Ối dồi ôi! Bấm chi vậy?",
-            "Tưởng có gì hay? Lêu lêu!",
-            "Bạn thật dễ bị dụ!",
-            "Muốn làm lại cuộc đời không? Bấm nữa đi!",
-            "Không có gì ở đây cả, nhưng bạn vẫn bấm!",
-            "Lêu lêu, đừng bấm nữa!",
-            "Bạn nghĩ bấm nữa sẽ có gì à? Haha!",
-            "Thôi đừng bấm nữa, tôi mệt rồi!",
-            "Bạn sẽ không thoát được đâu!"
-        ];
+<div class="w3-container w3-center">
+    <img class="logo-img" src="https://i.imgur.com/L2z0VFB.png" alt="Logo " sty>
+<!--    <h1 class="w3-text-blue">MAB</h1>-->
+<!--    <div class="w3-row-padding w3-margin-top">-->
+<!--        <div class="w3-half">-->
+<!--            <img class="thumbnail w3-card" src="https://cdn.24h.com.vn/upload/1-2021/images/2021-02-26/image50-1614333620-651-width500height800.jpg" onclick="openModal(this.src)" width="100%">-->
+<!--        </div>-->
+<!--        <div class="w3-half">-->
+<!--            <img class="thumbnail w3-card" src="https://cdn.24h.com.vn/upload/1-2021/images/2021-02-26/image50-1614333620-651-width500height800.jpg" onclick="openModal(this.src)" width="100%">-->
+<!--        </div>-->
+<!--        <div class="w3-half">-->
+<!--            <img class="thumbnail w3-card" src="https://cdn.24h.com.vn/upload/1-2021/images/2021-02-26/image50-1614333620-651-width500height800.jpg" onclick="openModal(this.src)" width="100%">-->
+<!--        </div>-->
+<!--        <div class="w3-half">-->
+<!--            <img class="thumbnail w3-card" src="https://cdn.24h.com.vn/upload/1-2021/images/2021-02-26/image50-1614333620-651-width500height800.jpg" onclick="openModal(this.src)" width="100%">-->
+<!--        </div>-->
+<!--    </div>-->
+</div>
 
-        document.body.addEventListener("click", function() {
-            document.body.style.backgroundColor = `rgb(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255})`;
-            let msg = document.querySelector(".message");
-            msg.textContent = messages[Math.floor(Math.random() * messages.length)];
-            msg.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
-            msg.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
-            msg.classList.toggle("rotate");
-            setTimeout(() => msg.classList.remove("rotate"), 1000);
-        });
-    </script>
+<div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImage" class="modal-content">
+</div>
+
+<script>
+    function openModal(src) {
+        document.getElementById("modalImage").src = src;
+        document.getElementById("imageModal").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("imageModal").style.display = "none";
+    }
+</script>
 </body>
 </html>
